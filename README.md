@@ -1,1 +1,1 @@
-This repo contains all codes for specialization track in the ALX 12-month software engineering program.
+This repo contains Javascript codes for specialization track in the ALX 12-month software engineering program.
