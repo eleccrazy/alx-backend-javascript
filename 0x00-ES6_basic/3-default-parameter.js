@@ -1,3 +1,3 @@
 export default function getSumOfHoods(...parmas) {
-  return parmas;
+  return parmas.length;
 }
