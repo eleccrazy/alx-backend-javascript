@@ -1,15 +1,18 @@
 export default function updateStudentGradeByCity(students, city, newGrades) {
+  const defaultGrade = { grade: 'N/A' };
+
   if (students instanceof Array) {
-    const filteredStudents = students.filter(
-      (student) => student.location === city,
-    );
-    return filteredStudents.map((std) => {
-      const targetGrades = newGrades.filter(
-        (grades) => grades.studentId === std.id,
-      );
-      std.grade = targetGrades[0] ? targetGrades[0].grade : 'NaN'; // eslint-disable-line no-param-reassign
-      return std;
-    });
+    return students
+      .filter((student) => student.location === city)
+      .map((student) => ({
+        id: student.id,
+        firstName: student.firstName,
+        location: student.location,
+        grade: (
+          newGrades.filter((grade) => grade.studentId === student.id).pop()
+          || defaultGrade
+        ).grade,
+      }));
   }
   return [];
 }
